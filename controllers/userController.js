@@ -48,3 +48,8 @@ const getUsersByLocation = async (req, res) => {
     }
   };
   
+  module.exports = {
+    getAllUsers,
+    getUserById,
+    getUsersByLocation
+  };
