@@ -17,7 +17,8 @@ mongoose.connect(mongoURI, { useNewUrlParser: true, useUnifiedTopology: true })
 app.get('/api/users', userRoutes.getAllUsers);
 //route to get users by id
 app.get('/api/users/:id', userRoutes.getUserById);
-
+// route to get users by location 
+app.get('/api/users/location/:location', userRoutes.getUsersByLocation);
 
 
 

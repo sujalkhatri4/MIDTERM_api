@@ -41,6 +41,23 @@
             document.getElementById('results').textContent = 'Error: ' + error.message;
           });
       };
+
+      document.getElementById('getUsersByLocation').onclick = () => {
+        const location = prompt("Enter Location:");
+        fetch(`/api/users/location/${location}`)
+          .then(response => {
+            if (!response.ok) {
+              throw new Error('No users found for this location');
+            }
+            return response.json();
+          })
+          .then(data => {
+            document.getElementById('results').textContent = JSON.stringify(data, null, 2);
+          })
+          .catch(error => {
+            document.getElementById('results').textContent = 'Error: ' + error.message;
+          });
+      };
   
 
 
