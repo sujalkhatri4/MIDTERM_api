@@ -1,17 +1,22 @@
 const User = require('../model/user');
 const fs = require('fs')
 
-// Load initial data from users.json
 const loadInitialData = async () => {
-    const count = await User.countDocuments(); // Check if users exist
-    if (count === 0) {
-        const data = JSON.parse(fs.readFileSync('users.json'));
-        await User.insertMany(data);
-        console.log('Initial user data loaded');
-    } else {
-        console.log('User data already exists');
+    try {
+        const count = await User.countDocuments(); 
+        if (count === 0) {
+            const data = JSON.parse(fs.readFileSync('users.json', 'utf8')); 
+            await User.insertMany(data); 
+            console.log('Initial user data loaded');
+        } else {
+            console.log('User data already exists');
+        }
+    } catch (err) {
+        console.error('Error loading initial data:', err);
     }
 };
+loadInitialData();
+
 
 // Call the function to load data
 loadInitialData();
@@ -24,7 +29,6 @@ const getAllUsers = async (req, res) => {
       res.status(500).send('Error fetching users');
     }
   };
-
   // Get user by ID
 const getUserById = async (req, res) => {
     try {
@@ -56,5 +60,5 @@ const getUsersByLocation = async (req, res) => {
   module.exports = {
     getAllUsers,
     getUserById,
-    getUsersByLocation
+    getUsersByLocation,
   };
