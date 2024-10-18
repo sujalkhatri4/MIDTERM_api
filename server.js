@@ -13,8 +13,10 @@ mongoose.connect(mongoURI, { useNewUrlParser: true, useUnifiedTopology: true })
   .then(() => console.log('MongoDB connected'))
   .catch(err => console.error('MongoDB connection error:', err));
 //routes 
-// routes to get all the users
+// route to get all the users
 app.get('/api/users', userRoutes.getAllUsers);
+//route to get users by id
+app.get('/api/users/:id', userRoutes.getUserById);
 
 
 

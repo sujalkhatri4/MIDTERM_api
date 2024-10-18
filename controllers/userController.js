@@ -19,3 +19,17 @@ const getAllUsers = async (req, res) => {
       res.status(500).send('Error fetching users');
     }
   };
+
+  // Get user by ID
+const getUserById = async (req, res) => {
+    try {
+      const user = await User.findOne({ userId: req.params.id });
+      if (user) {
+        res.json(user);
+      } else {
+        res.status(404).send('User not found');
+      }
+    } catch (err) {
+      res.status(500).send('Error fetching user');
+    }
+  };
