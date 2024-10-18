@@ -14,9 +14,18 @@
   <h2>Results:</h2>
   <pre id="results"></pre>
   <script>
-    // Students need to implement the JavaScript code here
+    document.getElementById('getAllUsers').onclick = () => {
+        fetch('/api/users')
+          .then(response => response.json())
+          .then(data => {
+            document.getElementById('results').textContent = JSON.stringify(data, null, 2);
+          })
+          .catch(error => {
+            document.getElementById('results').textContent = 'Error: ' + error.message;
+          });
+      }
 
-    // This includes fetching data from the REST API and handling the responses.
+
   </script>
 </body>
 </html>
