@@ -19,7 +19,7 @@ mongoose.connect(mongoURI)
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-// Serve static files (like your index.html)
+// Serve static files
 app.use(express.static(path.join(__dirname, 'public')));
 
 // Routes
@@ -27,7 +27,7 @@ app.get('/api/users', userRoutes.getAllUsers);// get all users
 app.get('/api/users/:id', userRoutes.getUserById);//get user by id
 app.get('/api/users/location/:location', userRoutes.getUsersByLocation);//get user by location
 
-// Serve index.html at the root route
+// Serve  root route
 app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, 'index.html'));
 });

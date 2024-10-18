@@ -16,10 +16,6 @@ const loadInitialData = async () => {
     }
 };
 loadInitialData();
-
-
-// Call the function to load data
-loadInitialData();
   // Get all users
 const getAllUsers = async (req, res) => {
     try {
